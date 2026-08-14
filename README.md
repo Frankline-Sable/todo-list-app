@@ -13,3 +13,7 @@ Never stop Learning!.
 how to remove tracked file & folder github
 git rm --cached filename
 git rm -r --cached path/to/folder
+
+
+dontnet new webapi -n BankingAPi
+dotnet dev-certs https --trust
