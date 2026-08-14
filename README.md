@@ -6,3 +6,10 @@ Am making this app to horn my skills in angular and dotnet
 
 ### Motto
 Never stop Learning!.
+
+
+### Things to remember
+
+how to remove tracked file & folder github
+git rm --cached filename
+git rm -r --cached path/to/folder

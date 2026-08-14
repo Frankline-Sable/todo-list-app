@@ -1,0 +1,38 @@
+# .NET build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# Test results
+TestResults/
+*.trx
+
+# NuGet
+*.nupkg
+packages/
+
+# Logs
+*.log
+
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Local Angular environment files if they contain secrets
+src/environments/environment.local.ts
+
+# .NET local configuration
+appsettings.Local.json
+
