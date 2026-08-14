@@ -17,3 +17,5 @@ git rm -r --cached path/to/folder
 
 dontnet new webapi -n BankingAPi
 dotnet dev-certs https --trust
+
+ng new BankingUi --routing=false --ssr=false
