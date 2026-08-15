@@ -24,3 +24,6 @@ ng generate component pages/xxx
 
 http://localhost:5274/openapi/v1.json
 dotnet add package Swashbuckle.AspNetCore
+
+
+http://localhost:5274/swagger/index.html
