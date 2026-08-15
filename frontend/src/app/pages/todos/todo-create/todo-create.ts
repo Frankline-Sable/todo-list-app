@@ -19,11 +19,11 @@ export class TodoCreate implements OnInit {
 
   ngOnInit(): void {
     this.formTodo = this.formBuilder.group({
-      titleField: ['', [
+      title: ['', [
         Validators.required,
         Validators.maxLength(10)
       ]],
-      descField: ['', [
+      description: ['', [
         Validators.required
       ]],
     })
@@ -41,7 +41,7 @@ export class TodoCreate implements OnInit {
       next: data => {
         alert("Todo saved successfully");
         this.formTodo.reset(
-          {titleField: '', descField: '',}
+          {title: '', description: '',}
         );
       },
       error: error => {

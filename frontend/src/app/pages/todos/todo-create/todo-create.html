@@ -2,8 +2,8 @@
   <h2>Create a TODO</h2>
 
   <form [formGroup]="formTodo" (ngSubmit)="onSaveTo()">
-    <input type="text" placeholder="Enter title" formControlName="titleField"><br><br>
-    <textarea placeholder="Enter Description" formControlName="descField"></textarea><br><br><br>
+    <input type="text" placeholder="Enter title" formControlName="title"><br><br>
+    <textarea placeholder="Enter Description" formControlName="description"></textarea><br><br><br>
 
     <button type="submit" [disabled]="formTodo.invalid">Save TODO</button>
   </form>
