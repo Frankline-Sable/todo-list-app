@@ -37,7 +37,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TodoDbModel");
+                    b.ToTable("Todos");
                 });
 #pragma warning restore 612, 618
         }

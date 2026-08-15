@@ -27,3 +27,6 @@ dotnet add package Swashbuckle.AspNetCore
 
 
 http://localhost:5274/swagger/index.html
+
+
+rm todo.db

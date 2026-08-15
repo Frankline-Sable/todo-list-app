@@ -12,7 +12,7 @@ namespace backend.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TodoDbModel",
+                name: "Todos",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
@@ -23,7 +23,7 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TodoDbModel", x => x.Id);
+                    table.PrimaryKey("PK_Todos", x => x.Id);
                 });
         }
 
@@ -31,7 +31,7 @@ namespace backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TodoDbModel");
+                name: "Todos");
         }
     }
 }

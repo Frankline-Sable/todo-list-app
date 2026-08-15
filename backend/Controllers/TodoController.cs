@@ -2,6 +2,7 @@ using backend.Data;
 using backend.DTO;
 using backend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers;
 
@@ -34,12 +35,19 @@ public class TodoController : ControllerBase
         {
             Title = request.Title,
             Description = request.Description,
+            CreatedAt =DateTime.Now,
+            UpdatedAt = DateTime.Now
         };
 
-        _todoDbContext.TodoDbModel.Add(todoRecord);
+        _todoDbContext.Todos.Add(todoRecord);
         await _todoDbContext.SaveChangesAsync();
         return Ok(todoRecord);
     }
 
-
+    [HttpGet("")]
+    public async Task<IActionResult> GetTodos()
+    {
+        var todos = await _todoDbContext.Todos.OrderByDescending(t => t.UpdatedAt).ToListAsync();
+        return Ok(todos);
+    }
 }

@@ -11,7 +11,7 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(TodoDbContext))]
-    [Migration("20260815043953_InitialCreate")]
+    [Migration("20260815051136_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -40,7 +40,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TodoDbModel");
+                    b.ToTable("Todos");
                 });
 #pragma warning restore 612, 618
         }
