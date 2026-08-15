@@ -30,3 +30,8 @@ http://localhost:5274/swagger/index.html
 
 
 rm todo.db
+
+
+Change detection angular
+private cdr: ChangeDetectorRef
+this.cdr.detectChanges();

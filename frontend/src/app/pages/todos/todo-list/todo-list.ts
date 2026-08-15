@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
@@ -15,7 +15,8 @@ import {JsonPipe} from '@angular/common';
   styleUrl: './todo-list.css',
 })
 export class TodoList implements OnInit {
-  todos: Todo[] = [];
+
+  todos = signal<Todo[]>([]);
   apiUrl = "http://localhost:5274/api/todos";
 
   ngOnInit(): void {
@@ -31,7 +32,7 @@ export class TodoList implements OnInit {
       next: data => {
         console.log('BEFORE:', this.todos.length);
 
-        this.todos = data;
+        this.todos.set(data);
 
         console.log('AFTER:', this.todos.length);
       },
@@ -51,7 +52,7 @@ export class Todo {
   updatedAt: Date;
 
 
-  constructor(id:string,title: string, description: string, createdAt: Date, updatedAt: Date) {
+  constructor(id: string, title: string, description: string, createdAt: Date, updatedAt: Date) {
     this.id = id;
     this.title = title;
     this.description = description;

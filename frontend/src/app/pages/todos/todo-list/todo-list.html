@@ -1,15 +1,12 @@
 <div style="padding: 20px">
   <h2>List My Todos</h2>
 
-  <p>Todo count: {{ todos.length }}</p>
 
-  <pre>{{ todos | json }}</pre>
-
-  @if (todos.length === 0) {
+  @if (todos().length === 0) {
     <p>You haven't created a todo so far.</p>
   } @else {
     <ul>
-      @for (todo of todos; track todo.id) {
+      @for (todo of todos(); track todo.id) {
         <li>
           <div>
             <h4>{{ todo.title }}</h4>
