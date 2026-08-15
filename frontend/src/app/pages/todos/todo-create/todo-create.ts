@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-todo-create',
@@ -14,16 +15,16 @@ export class TodoCreate implements OnInit {
   formTodo!: FormGroup;
   apiUrl = "http://localhost:5274/api/todos";
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) {
   };
 
   ngOnInit(): void {
     this.formTodo = this.formBuilder.group({
-      titleField: ['', [
+      title: ['', [
         Validators.required,
         Validators.maxLength(10)
       ]],
-      descField: ['', [
+      description: ['', [
         Validators.required
       ]],
     })
@@ -41,8 +42,9 @@ export class TodoCreate implements OnInit {
       next: data => {
         alert("Todo saved successfully");
         this.formTodo.reset(
-          {titleField: '', descField: '',}
+          {title: '', description: '',}
         );
+        this.router.navigate(['/todos/list']);
       },
       error: error => {
         console.log("Could not save todo", error);

@@ -20,6 +20,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 
 
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -39,6 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+// Very important
+app.MapControllers();
 
 app.Run();
 

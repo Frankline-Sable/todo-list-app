@@ -10,5 +10,5 @@ public class TodoDbContext : DbContext
     {
     }
 
-    public DbSet<TodoDbModel> TodoDbModel { get; set; }
+    public DbSet<TodoDbModel> Todos { get; set; }
 }

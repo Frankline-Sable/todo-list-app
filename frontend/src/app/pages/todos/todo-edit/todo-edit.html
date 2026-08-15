@@ -1,1 +1,11 @@
-<p>todo-edit works!</p>
+<div style="padding: 20px">
+  <h2>Update a TODO</h2>
+
+  <form [formGroup]="formTodo" (ngSubmit)="onSaveTo()">
+    <input type="text" placeholder="Enter title" formControlName="title"><br><br>
+    <textarea placeholder="Enter Description" formControlName="description"></textarea><br><br><br>
+
+    <button type="submit" [disabled]="formTodo.invalid">Update TODO</button>
+  </form>
+
+</div>
