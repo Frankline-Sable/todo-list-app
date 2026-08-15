@@ -35,7 +35,7 @@ public class TodoController : ControllerBase
         {
             Title = request.Title,
             Description = request.Description,
-            CreatedAt =DateTime.Now,
+            CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now
         };
 
@@ -49,5 +49,19 @@ public class TodoController : ControllerBase
     {
         var todos = await _todoDbContext.Todos.OrderByDescending(t => t.UpdatedAt).ToListAsync();
         return Ok(todos);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var todo = await _todoDbContext.Todos.FindAsync(id);
+        if (todo == null)
+        {
+            return NotFound();
+        }
+
+        _todoDbContext.Todos.Remove(todo);
+        await _todoDbContext.SaveChangesAsync();
+        return NoContent();
     }
 }

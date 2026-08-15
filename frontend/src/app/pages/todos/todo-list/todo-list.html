@@ -11,6 +11,7 @@
           <div>
             <h4>{{ todo.title }}</h4>
             <p>{{ todo.description }}</p>
+            <button (click)="onDelete(todo)">Delete</button>
           </div>
         </li>
       }

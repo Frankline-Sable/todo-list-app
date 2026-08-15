@@ -8,8 +8,7 @@ import {JsonPipe} from '@angular/common';
   selector: 'app-todo-list',
   imports: [
     ReactiveFormsModule,
-    RouterLink,
-    JsonPipe
+    RouterLink
   ],
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.css',
@@ -39,6 +38,20 @@ export class TodoList implements OnInit {
       error: err => {
         console.log("Error loading todos.", err);
         alert("Error loading todos.");
+      }
+    })
+  }
+
+  onDelete(todo: Todo) {
+    this.http.delete(this.apiUrl + `/${todo.id}`).subscribe({
+      next: data => {
+        //this.loadTodos();
+        this.todos.update(todos=>todos.filter(t=>t.id!==todo.id));
+        alert("Delete successfully.");
+      },
+      error: err => {
+        console.log("Error deleting todos.", err);
+        alert("Error deleting todos.");
       }
     })
   }
