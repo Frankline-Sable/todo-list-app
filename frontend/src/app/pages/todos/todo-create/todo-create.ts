@@ -12,7 +12,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class TodoCreate implements OnInit {
   formTodo!: FormGroup;
-  apiUrl="http://localhost:5274/api/todos";
+  apiUrl = "http://localhost:5274/api/todos";
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
   };
@@ -32,14 +32,16 @@ export class TodoCreate implements OnInit {
   onSaveTo() {
     if (this.formTodo.invalid) return;
 
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json',
-    "from":"sable"});
+    const headers = {
+      'Content-Type': 'application/json',
+      "from": "sable"
+    };
 
-    this.http.post(this.apiUrl, this.formTodo.value, {headers: headers}).subscribe({
+    this.http.post(this.apiUrl+"/create", this.formTodo.value, {headers: headers}).subscribe({
       next: data => {
         alert("Todo saved successfully");
         this.formTodo.reset(
-          {titleField: '', descField: '', }
+          {titleField: '', descField: '',}
         );
       },
       error: error => {
@@ -49,20 +51,4 @@ export class TodoCreate implements OnInit {
     })
   }
 }
-/*
 
-    // Generate unique header
-    const headers = {'X-Idempotency-Key': uuidv4()};
-
-    this.http.post(this.apiUrl+"/execute", this.transferForm.value, {headers}).subscribe({
-      next: (data) => {
-        console.log("sent data", data);
-        this.transferForm.reset({amount: 0});
-        this.loadHistory();
-      },
-      error: (err) => {
-        console.log("Could not load transfers.", err);
-        alert(err.error || 'Server error Occurred');
-      }
-    })
- */
