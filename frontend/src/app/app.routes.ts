@@ -20,7 +20,7 @@ export const routes: Routes = [
     component: TodoList
   },
   {
-    path: 'todos/:id/edit',
+    path: 'todos/update/:id',
     component: TodoEdit
   },
   {

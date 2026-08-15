@@ -64,4 +64,41 @@ public class TodoController : ControllerBase
         await _todoDbContext.SaveChangesAsync();
         return NoContent();
     }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(
+        [FromBody] UpdateRequest request, String id)
+    {
+        if (string.IsNullOrEmpty(id))
+        {
+            return BadRequest("Invalid request, id is required");
+        }
+
+        var todo = await _todoDbContext.Todos.FindAsync(id);
+        if (todo == null)
+        {
+            return NotFound();
+        }
+
+        todo.Title = request.Title;
+        todo.Description = request.Description;
+        todo.UpdatedAt = DateTime.Now;
+        _todoDbContext.Todos.Update(todo);
+        await _todoDbContext.SaveChangesAsync();
+        return Ok(todo);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get(string id)
+    {
+        var todo = await _todoDbContext.Todos.FindAsync(id);
+        if (todo == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(todo);
+    }
+
+    public record UpdateRequest(string Title, string? Description);
 }
