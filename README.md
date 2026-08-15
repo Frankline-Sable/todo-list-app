@@ -19,3 +19,7 @@ dontnet new webapi -n BankingAPi
 dotnet dev-certs https --trust
 
 ng new BankingUi --routing=false --ssr=false
+ng generate component pages/xxx
+
+
+http://localhost:5274/openapi/v1.json

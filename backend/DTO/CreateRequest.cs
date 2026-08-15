@@ -1,6 +1,3 @@
 namespace backend.DTO;
 
-public class CreateRequest
-{
-    
-}
+public record CreateRequest(string Title, string? Description);
